@@ -7,6 +7,7 @@ public class datatype {
 		System.out.println(5.0/2); 
 		System.out.println((double)5/2);
 		System.out.println(5/2);
+		System.out.println(3.0+5/2+5*2);
 		
 		double d1 = 4.64; 
 		double d2 = 2.0;
