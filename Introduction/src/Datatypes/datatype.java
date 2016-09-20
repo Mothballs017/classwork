@@ -17,6 +17,7 @@ public class datatype {
 		System.out.println("d2 : " + d2); 
 		System.out.println("d3 : " + d3);  
 		System.out.println("d1 - d2 : " + (d1 - d2));
+		
 	}
 
 }
