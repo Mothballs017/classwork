@@ -21,5 +21,4 @@ public class StringPractice {
 			System.out.println("Word1 is before word2" + " lexicongraphically.");
 		}
 	}
-
 }
