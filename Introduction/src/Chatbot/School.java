@@ -3,7 +3,7 @@ package Chatbot;
 public class School implements Topic {
 
 	private boolean inSchoolLoop;
-	private String schoolReponse;
+	private String schoolResponse;
 	
 	public School(){
 		
@@ -13,7 +13,7 @@ public class School implements Topic {
 		inSchoolLoop = true;
 		while(inSchoolLoop){
 			ChuMain.print("Tell me about school.");
-			schoolReponse = ChuMain.getInput();
+			schoolResponse = ChuMain.getInput();
 			if(schoolResponse.indexOf("stop") >= 0){
 				inSchoolLoop = false;
 				ChuMain.talkForever();

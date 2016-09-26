@@ -3,8 +3,7 @@ package Chatbot;
 import java.util.Scanner;
 
 public class ChuMain {
-
-
+	
 		static Scanner input;
 		static String user;
 		static int lineCount;
@@ -39,7 +38,7 @@ public class ChuMain {
 			while(inLoop){
 				print("Greetings, " + user + ". How are you?");
 				response = getInput();
-				if(response.indexOf("good") >= 0){
+				if(findKeyword(response, "good", 0)){
 					print("I'm so happy you're good.");
 				}//.equals would have only been the word good
 				//indexOf means if it includes "good"
@@ -53,6 +52,36 @@ public class ChuMain {
 			}
 		}
 		
+		private static boolean findKeyword(String searchString, String key, int startIndex) {
+			//delete white space
+			String phrase = searchString.trim();
+			//set all letters to lower case
+			phrase = phrase.toLowerCase();
+			key = key.toLowerCase();
+			//find positions of key
+			int psn = phrase.indexOf(key);
+			//keep looking for the word until we find the right context
+			while(psn >= 0){
+				String before = " ";
+				String after = " ";
+				//if the phrase does not end with that word
+				if(psn + key.length() < phrase.length()){
+					after = phrase.substring(psn + key.length(), psn + key.length() + 1).toLowerCase();
+				}
+				//if the phrase does not begin with this word
+				if(psn > 0){
+					before = phrase.substring(psn - 1, psn).toLowerCase();
+				}
+				if(before.compareTo("a") < 0 && after.compareTo("a") < 0){
+					return true;
+				}
+				//in case keyword was not found yet
+				//check the rest of the string
+				psn = phrase.indexOf(key, psn + 1);
+			}
+			return false;
+		}
+
 		public static void promptInput(){
 			print(user + ", try inputting a String!");
 			String userInput = input.nextLine();
