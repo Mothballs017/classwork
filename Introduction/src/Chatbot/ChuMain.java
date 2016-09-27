@@ -10,6 +10,7 @@ public class ChuMain {
 		static boolean inLoop;
 		static String response;
 		static Topic school;
+		static Topic like;
 		
 		public static void main(String[] args) {
 			createTopics();
@@ -38,11 +39,15 @@ public class ChuMain {
 			while(inLoop){
 				print("Greetings, " + user + ". How are you?");
 				response = getInput();
-				if(findKeyword(response, "good", 0)){
+				if(findKeyword(response, "good", 0) >= 0){
 					print("I'm so happy you're good.");
 				}//.equals would have only been the word good
 				//indexOf means if it includes "good"
-				else if(response.indexOf("school") >= 0){
+				else if(findKeyword(response, "like", 0) >= 0){
+					inLoop = false;
+					like.talk();
+				}
+				else if(findKeyword(response, "school", 0) >= 0){
 					inLoop = false; //exit this loop
 					school.talk();
 				}
@@ -52,14 +57,17 @@ public class ChuMain {
 			}
 		}
 		
-		private static boolean findKeyword(String searchString, String key, int startIndex) {
+		public static int findKeyword(String searchString, String key, int startIndex) {
 			//delete white space
 			String phrase = searchString.trim();
 			//set all letters to lower case
 			phrase = phrase.toLowerCase();
 			key = key.toLowerCase();
+//			System.out.println("The phrase is " + phrase);
+//			System.out.println("The key is " + key);
 			//find positions of key
 			int psn = phrase.indexOf(key);
+//			System.out.println("The psn is "+ psn);
 			//keep looking for the word until we find the right context
 			while(psn >= 0){
 				String before = " ";
@@ -67,21 +75,53 @@ public class ChuMain {
 				//if the phrase does not end with that word
 				if(psn + key.length() < phrase.length()){
 					after = phrase.substring(psn + key.length(), psn + key.length() + 1).toLowerCase();
+//					System.out.println("The character after " + key + " is " + after);
 				}
 				//if the phrase does not begin with this word
 				if(psn > 0){
 					before = phrase.substring(psn - 1, psn).toLowerCase();
+//					System.out.println("The character before " + key + " is " + before);
 				}
 				if(before.compareTo("a") < 0 && after.compareTo("a") < 0){
-					return true;
+//					System.out.println(key + " was found at " + psn);
+					if(noNegations(phrase, psn)){
+						return psn;
+					}
 				}
 				//in case keyword was not found yet
 				//check the rest of the string
 				psn = phrase.indexOf(key, psn + 1);
+//				System.out.println(key + " was not found." + " Checking " + psn);
 			}
-			return false;
+			return -1;
 		}
-
+			
+		//"helper method" - method that contributes functionality to another method
+		//helpful when you need to do the same thing repeatedly
+		//also help make methods more readable
+		//this method is private, only used by method it is helping
+		private static boolean noNegations(String phrase, int index){
+			//check for word "NO " (3 characters)
+			//check to see if there is room for the word "NO " to be in front of the index
+			if(index - 3 >= 0  && phrase.substring(index - 3, index).equals("no ")){
+				return false;
+			}
+			//check for "not "
+			if(index - 4 >= 0  && phrase.substring(index - 3, index).equals("not ")){
+				return false;
+			}
+			//check for "never " 
+			if(index - 6 >= 0  && phrase.substring(index - 3, index).equals("never ")){
+				return false;
+			}
+			//check for "n't "
+			if(index - 4 >= 0  && phrase.substring(index - 3, index).equals("n't ")){
+				return false;
+			}
+			return true;
+			
+		}
+		
 		public static void promptInput(){
 			print(user + ", try inputting a String!");
 			String userInput = input.nextLine();
@@ -124,6 +164,7 @@ public class ChuMain {
 		public static void createTopics() {
 			input = new Scanner(System.in);
 			school = new School();
+			like = new ChuLike();
 		}
 		
 		
