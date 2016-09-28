@@ -27,5 +27,12 @@ public class ChuLike implements Topic{
 			}
 		}
 	}
+
+
+	
+	public boolean isTriggered(String userInput) {
+		
+		return false;
+	}
 	
 }

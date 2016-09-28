@@ -26,4 +26,16 @@ public class School implements Topic {
 		}
 	}
 
+	public boolean isTriggered(String userInput) {
+		//String[] triggers = {"school", "class", "teacher"};
+		//you could usea for loop to iterate through the array
+		if(ChuMain.findKeyword(userInput, "school", 0) >= 0){
+			return true;
+		}
+		if(ChuMain.findKeyword(userInput, "class", 0) >= 0){
+			return true;
+		}
+		return false;
+	}
+
 }
