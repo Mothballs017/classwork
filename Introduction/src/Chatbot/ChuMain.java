@@ -11,6 +11,7 @@ public class ChuMain {
 		static String response;
 		static Topic school;
 		static Topic like;
+		static Topic hello;
 		
 		public static void main(String[] args) {
 			createTopics();
@@ -46,6 +47,10 @@ public class ChuMain {
 				else if(findKeyword(response, "like", 0) >= 0){
 					inLoop = false;
 					like.talk();
+				}
+				else if(findKeyword(response, "hello", 0) >= 0){
+					inLoop = false;
+					hello.talk();
 				}
 				else if(findKeyword(response, "school", 0) >= 0){
 					inLoop = false; //exit this loop
@@ -165,6 +170,7 @@ public class ChuMain {
 			input = new Scanner(System.in);
 			school = new School();
 			like = new ChuLike();
+			hello = new ChuHello();
 		}
 		
 		
