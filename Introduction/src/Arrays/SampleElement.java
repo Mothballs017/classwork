@@ -13,7 +13,7 @@ public class SampleElement {
 		return number;
 	}
 	
-	//the value of number
+	//the value of number is stored as a field
 	public void increase(){
 		number++;
 	}
