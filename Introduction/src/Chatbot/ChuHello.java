@@ -37,7 +37,7 @@ public class ChuHello implements Topic{
 	private void printResponse() {
 		int responseIndex = 0;
 		//calm response
-		if(helloCount > 5){
+		if(helloCount >= 5){
 			responseIndex = (int)(Math.random() * calmResponses.length);
 			ChuMain.print(calmResponses[responseIndex]);
 		}
