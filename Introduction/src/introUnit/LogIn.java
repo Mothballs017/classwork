@@ -42,7 +42,7 @@ public class LogIn {
 					inLoop = false;
 				}
 				else{
-					System.out.println("Incorrect password. You have "+remainingTries+" left.");
+					System.out.println("Incorrect password. You have "+remainingTries+" tries left.");
 				}
 			}
 		}
