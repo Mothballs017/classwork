@@ -18,7 +18,8 @@ public class ArraysMethod {
 	}
 
 	public static int searchUnsorted(int[] arrayToSearch, int key){
-		//take array, for each item, if it equals key, add 1 
+		//take array, for each item, if it equals key, add 1, add to repeat Array
+		//for each item in repeat Array, if over 0, then print item -1;
 		int repeatArray[] = new int[arrayToSearch.length];
 		int index = 0;
 		for(int i = 0; i < arrayToSearch.length; i++){
@@ -111,6 +112,7 @@ public class ArraysMethod {
 		 * array = {-6, 16, 10, 9, 1, 5}
 		 * 
 		 * */
+		//see cycleOnce
 	}
 
 	public static int countDifferences(int[] array1, int[] array2){
