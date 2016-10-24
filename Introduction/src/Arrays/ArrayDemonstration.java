@@ -80,5 +80,38 @@ public class ArrayDemonstration {
 			System.out.println(i+1+" is rolled "+((double) array[i]/dieArray.length*100)+"% of the time.");
 		}
 	}
+	private static void print(int[] arr) {
+		for(int i = 0; i < arr.length-1; i++){
+			System.out.print(arr[i]+", ");
+		}
+		System.out.println(arr[arr.length-1]);
+	}
+
+	private static void shuffle(int[] arr) {
+		for(int i = 0; i<arr.length; i++){
+			int random = (int)(Math.random()*arr.length);
+			swap(arr,i,random);
+		}
+	}
+
+	private static void swap(int[] arr, int i, int j) {
+		int placeholder = arr[j];
+		arr[j] = arr[i];
+		arr[i] = placeholder;
+	}
+	
+	/**
+	 * returns true if searchValue is less than element
+	 * halfway between beginning and end
+	 * @param testArray the int[] to be searched
+	 * @param i
+	 * @param j
+	 * @param length
+	 * @return
+	 */
+
+	private static boolean checkHalfway(int[] arr, int searchValue, int begin, int end) {
+		return searchValue < arr[(begin+end+1)/2];
+	}
 
 }

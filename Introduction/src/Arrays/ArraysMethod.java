@@ -16,8 +16,6 @@ public class ArraysMethod {
 		int[] testArray = {2,3,4,6,9,11,12,15};
 //		System.out.println(checkHalfway(testArray,12,0,testArray.length-1));
 //		swap(testArray,0,testArray.length-1);
-		shuffle(testArray);
-		print(testArray);
 //		if(checkHalfway(testArray,12,0,testArray.length-1)){
 //			System.out.println("The number you are searching for is less than the value in the middle of the array");
 //		}
@@ -25,42 +23,6 @@ public class ArraysMethod {
 //			System.out.println("The number you are searching for is greater than or equal to the value in the middle of the array");
 //		}
 	}
-	//gap
-
-	private static void print(int[] arr) {
-		for(int i = 0; i < arr.length-1; i++){
-			System.out.print(arr[i]+", ");
-		}
-		System.out.println(arr[arr.length-1]);
-	}
-
-	private static void shuffle(int[] arr) {
-		for(int i = 0; i<arr.length; i++){
-			int random = (int)(Math.random()*arr.length);
-			swap(arr,i,random);
-		}
-	}
-
-	private static void swap(int[] arr, int i, int j) {
-		int placeholder = arr[j];
-		arr[j] = arr[i];
-		arr[i] = placeholder;
-	}
-	
-	/**
-	 * returns true if searchValue is less than element
-	 * halfway between beginning and end
-	 * @param testArray the int[] to be searched
-	 * @param i
-	 * @param j
-	 * @param length
-	 * @return
-	 */
-
-	private static boolean checkHalfway(int[] arr, int searchValue, int begin, int end) {
-		return searchValue < arr[(begin+end+1)/2];
-	}
-	//gap
 
 	public static int searchUnsorted(int[] arrayToSearch, int key){
 		int repeatArray[] = new int[arrayToSearch.length];
