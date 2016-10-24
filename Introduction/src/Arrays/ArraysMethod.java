@@ -13,18 +13,12 @@ public class ArraysMethod {
 		 * DO NOT spend hours and hours trying to fix perfect code just because my test
 		 * says that it isn't perfect!
 		 * */
-		int[] testArray = {2,3,4,6,9,11,12,15};
-//		System.out.println(checkHalfway(testArray,12,0,testArray.length-1));
-//		swap(testArray,0,testArray.length-1);
-//		if(checkHalfway(testArray,12,0,testArray.length-1)){
-//			System.out.println("The number you are searching for is less than the value in the middle of the array");
-//		}
-//		else{
-//			System.out.println("The number you are searching for is greater than or equal to the value in the middle of the array");
-//		}
+		int[] testArray = {2,3,4,6,9,11,12,15,3};
+		System.out.println(searchUnsorted(testArray,3));
 	}
 
 	public static int searchUnsorted(int[] arrayToSearch, int key){
+		//take array, for each item, if it equals key, add 1 
 		int repeatArray[] = new int[arrayToSearch.length];
 		int index = 0;
 		for(int i = 0; i < arrayToSearch.length; i++){
@@ -43,7 +37,7 @@ public class ArraysMethod {
 		else{
 			return -1;
 		}
-		//finished
+		//find out how to remove doubles
 	}
 
 	public static int searchSorted(int[] sortedArrayToSearch, int key){
@@ -62,7 +56,7 @@ public class ArraysMethod {
 			
 		}
 		return index;
-		//fin
+		//fix doubles
 	}
 
 	public static boolean isSorted(int[] array){
@@ -85,7 +79,7 @@ public class ArraysMethod {
 			}
 		}
 		return descending;
-		//fin
+		//fix doubles
 	}
 
 

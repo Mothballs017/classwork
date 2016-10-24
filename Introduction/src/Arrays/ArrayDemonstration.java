@@ -14,11 +14,63 @@ public class ArrayDemonstration {
 
 //		populateArray(numArray);
 //		populateRandomArray(randomArray);
-		populateDieArray(dieArray);
-		populateResultsArray(dieArray);
-		printResults(resultsArray);
+//		populateDieArray(dieArray);
+//		populateResultsArray(dieArray);
+//		printResults(resultsArray);
 //		listDeck(cardArray);
+//		System.out.println(checkHalfway(testArray,12,0,testArray.length-1));
+//		swap(testArray,0,testArray.length-1);
+//		if(checkHalfway(testArray,12,0,testArray.length-1)){
+//			System.out.println("The number you are searching for is less than the value in the middle of the array");
+//		}
+//		else{
+//			System.out.println("The number you are searching for is greater than or equal to the value in the middle of the array");
+//		}
+		int[] arr = {0,1,2,3,4,5};
+		int[] cycled = cycleOnce(arr);
+		for(int i = 0; i < arr.length; i++){
+			System.out.println(cycled[i]);
+		}
+
+	}
+	
+	private static double getMinAboveBound(double[] arr, double bound){
 		
+		return bound;
+	}
+	
+	private static int[] cycleOnce(int[] array){
+		for(int i = 0; i < array.length - 1; i++){
+			swap(array,array[i], array[i+1]);
+		}
+		return array;
+	}
+	
+	private static void shuffle(int[] arr) {
+		for(int i = 0; i<arr.length; i++){
+			int random = (int)(Math.random()*arr.length);
+			swap(arr,i,random);
+		}
+	}
+
+	private static void swap(int[] arr, int i, int j) {
+		int placeholder = arr[j];
+		arr[j] = arr[i];
+		arr[i] = placeholder;
+	}
+	
+	/**
+	 * returns true if searchValue is less than element
+	 * halfway between beginning and end
+	 * @param testArray the int[] to be searched
+	 * @param i
+	 * @param j
+	 * @param length
+	 * @return
+	 */
+
+	private static boolean checkHalfway(int[] arr, int searchValue, int begin, int end) {
+		return searchValue < arr[(begin+end+1)/2];
 	}
 
 	private static void listDeck(String[] cardArray2) {
@@ -85,33 +137,6 @@ public class ArrayDemonstration {
 			System.out.print(arr[i]+", ");
 		}
 		System.out.println(arr[arr.length-1]);
-	}
-
-	private static void shuffle(int[] arr) {
-		for(int i = 0; i<arr.length; i++){
-			int random = (int)(Math.random()*arr.length);
-			swap(arr,i,random);
-		}
-	}
-
-	private static void swap(int[] arr, int i, int j) {
-		int placeholder = arr[j];
-		arr[j] = arr[i];
-		arr[i] = placeholder;
-	}
-	
-	/**
-	 * returns true if searchValue is less than element
-	 * halfway between beginning and end
-	 * @param testArray the int[] to be searched
-	 * @param i
-	 * @param j
-	 * @param length
-	 * @return
-	 */
-
-	private static boolean checkHalfway(int[] arr, int searchValue, int begin, int end) {
-		return searchValue < arr[(begin+end+1)/2];
 	}
 
 }
