@@ -43,7 +43,7 @@ public class ArraysMethod {
 		else{
 			return -1;
 		}
-		//fin
+		//finished
 	}
 
 	public static int searchSorted(int[] sortedArrayToSearch, int key){
