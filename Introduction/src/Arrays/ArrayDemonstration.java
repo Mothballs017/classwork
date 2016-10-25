@@ -29,8 +29,8 @@ public class ArrayDemonstration {
 //		}
 		int[] arr = {0,1,2,3,4,5};
 		int[] cycled = cycleOnce(arr);
-		for(int i = 0; i < arr.length; i++){
-			System.out.println(cycled[i]);
+		for(int i: arr){
+			System.out.println(i + "");
 		}
 
 	}
@@ -48,14 +48,14 @@ public class ArrayDemonstration {
 		   if(tempLowIndex!=i){
 		         swap(array, tempLowIndex, i);
 		         System.out.println("becomes "+Arrays.toString(array));
-		   } 
+		   }
 		   }//end for
 		System.out.println("Ends as "+Arrays.toString(array));
 		}//end method
 	
 	private static int[] cycleOnce(int[] array){
-		for(int i = 0; i < array.length - 1; i++){
-			swap(array,array[i], array[i+1]);
+		for(int i = 0; i < array.length-1; i++){
+			swap(array,i, i+1);
 		}
 		return array;
 	}
