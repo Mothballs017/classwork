@@ -16,7 +16,9 @@ public class ArraysMethod {
 		int[] testArray = {2,3,3,4,6,9,11,12,15};
 		int[] arr = {15,12,11,9,6,4,3,3,2};
 		reverseOrder(arr);
-		for(int i: arr){
+		int[] newArr = generateDistinctItemsList(5);
+		System.out.println(newArr[0]);
+		for(int i: newArr){
 			System.out.println(i + "");
 		}
 		//System.out.println(searchSorted(arr,3));
@@ -147,7 +149,7 @@ public class ArraysMethod {
 		 * longestSequence({0,9,10,11,4,3,8,9}) returns '3', since '9,10,11' is 3 integers long
 		 * longestSequence({0,9,8,11,4,3,7,9}) returns '1', since there are no consecutive integers
 		 * */
-
+		
 		return 0;
 	}
 
@@ -162,6 +164,7 @@ public class ArraysMethod {
 		 *          since the sequence '9,6,3,4,3' is in both arrays and is 5 integers long, it doesn't matter that the sequence begins at different indices 
 		 * longestSequence({9,6,1,4,3,6,7,9}, {9,6,5,8,3,6,7,0}) returns '3', since the sequence '3,6,7' is in both arrays and is 3 integers long
 		 * */
+		
 		int longest = 1; 
 		boolean isSequence = false; 
 		int seqLength = 0; 
@@ -233,15 +236,17 @@ public class ArraysMethod {
 		 * 
 		 * */
 		int[] newArray = new int[n];
-		//		ncntr = 0;
-		//		boolean numberLoop = true;
-		//		while(numberLoop){
-		//			Random gen = new Random();
-		//			int randomNum = gen.nextInt(2*n) + 1;
-		//			randomNum;
-		//		}
-		//		
-		return null;
+		for(int i = 0; i < n; i++){
+			newArray[i] = randInt(1,2*n);
+//			int j = 0;
+//			while(j < countUnderBound(newArray,newArray[i])){
+				if(newArray[j] == newArray[i]){
+					newArray[i] = randInt(1,2*n);
+				}
+//			}
+//			
+		}
+		return newArray;
 	}
 
 
@@ -282,6 +287,23 @@ public class ArraysMethod {
 			swap(array,i, i+1);
 		}
 		return array;
+	}
+	private static int randInt(int min, int max) {
+		Random gen = new Random();
+		int randomNum = gen.nextInt((max - min) + 1) + min;
+
+		return randomNum;
+	}
+	private static int countUnderBound(int[] arr, int d){
+		//returns number of elements in arr less than d
+		int num = 0;
+		for(int i = 0; i < arr.length; i++){
+			if(arr[i] < d){
+				num++;
+			}
+		}
+		return num;
+		//to get median, (arr.length/2 - 1 + arr.length/2)/2
 	}
 
 

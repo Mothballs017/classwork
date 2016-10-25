@@ -28,26 +28,45 @@ public class ArrayDemonstration {
 //			System.out.println("The number you are searching for is greater than or equal to the value in the middle of the array");
 //		}
 		double[] decArr = {0.1,1.1,2.0,3.3,4.5};
-		int[] arr = {3,9,6,11,14,16};
-		int[] subArr = getSubArray(arr,2,4);
+		int[] arr = {3,9,6,11,3,9,6,11,14,16,11,3,11,3,9,6,11};
+		int[] sub = {6,11};
+		int[] subArr = getSubArray(arr,12,16);
 //		int[] cycled = cycleOnce(arr);
 //		for(int i = 0; i < arr.length; i++){
 //			System.out.println(cycled[i]);
 //		}
-		System.out.println(countUnderBound(decArr,4.0));
-		System.out.println(Arrays.toString(subArr)+"");
+//		System.out.println(countUnderBound(decArr,4.0));
+//		System.out.println(Arrays.toString(subArr)+"");
+		System.out.println(contains(arr, subArr));
+		selectionSort(arr);
 	}
 	
-	public static int[] getSubArray(int[] arr, int startIndex, int endIndex){
+	private static boolean contains(int[] arr, int[] subArray){
+		for(int i = 0; i < arr.length; i++){
+				int j = 0;
+				while(j < subArray.length){
+					if(subArray[j] == arr[i+j] && j == subArray.length -1){
+						return true;
+					}
+					else if(subArray[j] != arr[i+j]){
+						break;
+					}
+					j++;
+				}
+		}
+		return false;
+	}
+	
+	private static int[] getSubArray(int[] arr, int startIndex, int endIndex){
 		int[] subArray = new int[endIndex - startIndex + 1];
-		for(int i = 0; i<subArray.length; i++){
-			subArray[i] = arr[startIndex + 1];
+		for(int i = 0; i < subArray.length; i++){
+			subArray[i] = arr[startIndex+i];
 		}
 		return subArray;
 	}
 	
 	//free!!!!
-	public static void selectionSort(int[] array){
+	private static void selectionSort(int[] array){
 		System.out.println("Selection sort with "+Arrays.toString(array));
 		for (int i = 0; i < array.length - 1; i++){
 		    int tempLowIndex = i;
