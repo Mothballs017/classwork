@@ -3,7 +3,7 @@ package Arrays;
 import java.util.Random;
 
 public class ArraysMethod {
-	
+
 	public static void main(String[] args) {
 		/**
 		 * IMPORTANT NOTE: 
@@ -13,14 +13,18 @@ public class ArraysMethod {
 		 * DO NOT spend hours and hours trying to fix perfect code just because my test
 		 * says that it isn't perfect!
 		 * */
-		int[] testArray = {2,3,4,6,9,11,12,15,3};
-		System.out.println(searchUnsorted(testArray,3));
+		int[] testArray = {2,3,3,4,6,9,11,12,15};
+		int[] arr = {15,12,11,9,6,4,3,3,2};
+		reverseOrder(arr);
+		for(int i: arr){
+			System.out.println(i + "");
+		}
+		//System.out.println(searchSorted(arr,3));
 	}
 
 	public static int searchUnsorted(int[] arrayToSearch, int key){
 		//take array, for each item, if it equals key, add 1, add to repeat Array
 		//for each item in repeat Array, if over 0, then print item -1;
-		int repeatArray[] = new int[arrayToSearch.length];
 		int index = 0;
 		for(int i = 0; i < arrayToSearch.length; i++){
 			if(arrayToSearch[i] == key){
@@ -54,7 +58,7 @@ public class ArraysMethod {
 			if(sortedArrayToSearch[i] == key){
 				index = i;
 			}
-			
+
 		}
 		return index;
 		//fix doubles
@@ -112,6 +116,9 @@ public class ArraysMethod {
 		 * array = {-6, 16, 10, 9, 1, 5}
 		 * 
 		 * */
+		for(int i = 1; i < (array.length+1)/2; i++){
+			swap(array,i-1,array.length-i);
+		}
 		//see cycleOnce
 	}
 
@@ -155,8 +162,66 @@ public class ArraysMethod {
 		 *          since the sequence '9,6,3,4,3' is in both arrays and is 5 integers long, it doesn't matter that the sequence begins at different indices 
 		 * longestSequence({9,6,1,4,3,6,7,9}, {9,6,5,8,3,6,7,0}) returns '3', since the sequence '3,6,7' is in both arrays and is 3 integers long
 		 * */
+		int longest = 1; 
+		boolean isSequence = false; 
+		int seqLength = 0; 
+		if(array1.length > array2.length){
+			for(int i = 0; i < array1.length; i++){ 
+				for(int j = 0; j < array2.length; j++){ 
+					//System.out.println("j = " + j + " i = " + i); 
+					if(array1[i] == array2[j]){
+						isSequence = true; 
+					}
+					else{ 
+						isSequence = false; 
+					}
+					//System.out.println(isSequence); 
+					if(isSequence){ 
+						seqLength ++; 
+						i++; 
+						//System.out.println("seqLength = " + seqLength); 
+					}
+					else if(seqLength > longest){ 
+						longest = seqLength; seqLength = 0; 
+					}
+					else{ 
+						seqLength = 0; 
+					} 
+				} 
+			} 
+		}
+		else{ 
+			for(int i = 0; i < array2.length; i++){ 
+				for(int j = 0; j < array1.length; j++){ 
+					//System.out.println("j = " + j + " i = " + i); 
+					if(array2[i] == array1[j]){ 
+						isSequence = true; 
+					}
+					else{ 
+						isSequence = false; 
+					} 
+					//System.out.println(isSequence); 
+					if(isSequence){ 
+						seqLength ++; 
+						i++; 
+						//System.out.println("seqLength = " + seqLength); 
+					}
+					else if(seqLength > longest){ 
+						longest = seqLength; seqLength = 0; 
+					}
+					else{ 
+						seqLength = 0; 
+					} 
+				} 
+			} 
+		} 
+		if(seqLength > longest){ 
+			return seqLength; 
+		}
+		else{ 
+			return longest; 
+		} 
 
-		return 0;
 	}
 
 	public static int[] generateDistinctItemsList(int n){
@@ -167,15 +232,15 @@ public class ArraysMethod {
 		 * contains only entries between 1 and 2n (inclusive) and has no duplicates
 		 * 
 		 * */
-//		int[] newArray = new int[n];
-//		ncntr = 0;
-//		boolean numberLoop = true;
-//		while(numberLoop){
-//			Random gen = new Random();
-//			int randomNum = gen.nextInt(2*n) + 1;
-//			randomNum;
-//		}
-//		
+		int[] newArray = new int[n];
+		//		ncntr = 0;
+		//		boolean numberLoop = true;
+		//		while(numberLoop){
+		//			Random gen = new Random();
+		//			int randomNum = gen.nextInt(2*n) + 1;
+		//			randomNum;
+		//		}
+		//		
 		return null;
 	}
 
@@ -203,6 +268,20 @@ public class ArraysMethod {
 		 * CHALLENGE
 		 * For extra credit, make your method handle NEGATIVE n
 		 * */
+		for(int i = 0; i < n; i++){
+			cycleOnce(array);
+		}
+	}
+	private static void swap(int[] arr, int i, int j) {
+		int placeholder = arr[j];
+		arr[j] = arr[i];
+		arr[i] = placeholder;
+	}
+	private static int[] cycleOnce(int[] array){
+		for(int i = 0; i < array.length-1; i++){
+			swap(array,i, i+1);
+		}
+		return array;
 	}
 
 
