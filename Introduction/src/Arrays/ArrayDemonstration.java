@@ -27,12 +27,12 @@ public class ArrayDemonstration {
 //		else{
 //			System.out.println("The number you are searching for is greater than or equal to the value in the middle of the array");
 //		}
-		int[] arr = {0,1,2,3,4,5};
-		int[] cycled = cycleOnce(arr);
-		for(int i: arr){
-			System.out.println(i + "");
-		}
-
+		double[] arr = {0.1,1.1,2.0,3.3,4.5,5.5};
+//		int[] cycled = cycleOnce(arr);
+//		for(int i = 0; i < arr.length; i++){
+//			System.out.println(cycled[i]);
+//		}
+		System.out.println(countUnderBound(arr,4.0));
 	}
 	
 	//free!!!!
@@ -48,10 +48,21 @@ public class ArrayDemonstration {
 		   if(tempLowIndex!=i){
 		         swap(array, tempLowIndex, i);
 		         System.out.println("becomes "+Arrays.toString(array));
-		   }
+		   } 
 		   }//end for
 		System.out.println("Ends as "+Arrays.toString(array));
 		}//end method
+	
+	public static int countUnderBound(double[] arr, double d){
+		//returns number of elements in arr less than d
+		int num = 0;
+		for(int i = 0; i < arr.length; i++){
+			if(arr[i] < d){
+				num++;
+			}
+		}
+		return num;
+	}
 	
 	private static int[] cycleOnce(int[] array){
 		for(int i = 0; i < array.length-1; i++){
