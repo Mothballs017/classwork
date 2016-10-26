@@ -17,7 +17,6 @@ public class ArraysMethod {
 		int[] arr = {15,12,11,9,6,4,3,3,2};
 		reverseOrder(arr);
 		int[] newArr = generateDistinctItemsList(5);
-		System.out.println(newArr[0]);
 		for(int i: newArr){
 			System.out.println(i + "");
 		}
@@ -149,7 +148,7 @@ public class ArraysMethod {
 		 * longestSequence({0,9,10,11,4,3,8,9}) returns '3', since '9,10,11' is 3 integers long
 		 * longestSequence({0,9,8,11,4,3,7,9}) returns '1', since there are no consecutive integers
 		 * */
-		
+
 		return 0;
 	}
 
@@ -164,7 +163,7 @@ public class ArraysMethod {
 		 *          since the sequence '9,6,3,4,3' is in both arrays and is 5 integers long, it doesn't matter that the sequence begins at different indices 
 		 * longestSequence({9,6,1,4,3,6,7,9}, {9,6,5,8,3,6,7,0}) returns '3', since the sequence '3,6,7' is in both arrays and is 3 integers long
 		 * */
-		
+
 		int longest = 1; 
 		boolean isSequence = false; 
 		int seqLength = 0; 
@@ -235,18 +234,21 @@ public class ArraysMethod {
 		 * contains only entries between 1 and 2n (inclusive) and has no duplicates
 		 * 
 		 * */
-		int[] newArray = new int[n];
-		for(int i = 0; i < n; i++){
-			newArray[i] = randInt(1,2*n);
-//			int j = 0;
-//			while(j < countUnderBound(newArray,newArray[i])){
-				if(newArray[j] == newArray[i]){
-					newArray[i] = randInt(1,2*n);
-				}
-//			}
-//			
-		}
-		return newArray;
+		Random rng = new Random();
+
+	    int[] result = new int[n];
+	    int cur = 0;
+	    int nSub = n;
+	    int remaining = (2*n) - 1;
+	    for (int i = 0; i < (2*n) ; i++) {
+	        double probability = rng.nextDouble();
+	        if (probability < ((double) nSub) / (double) remaining) {
+	            nSub--;
+	            result[cur++] = i;
+	        }
+	        remaining--;
+	    }
+	    return result;
 	}
 
 
