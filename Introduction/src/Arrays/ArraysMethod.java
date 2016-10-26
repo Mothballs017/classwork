@@ -16,13 +16,13 @@ public class ArraysMethod {
 		//int[] testArray = {2,3,3,4,6,9,11,12,15};
 		//int[] arr = {15,12,11,9,6,4,3,3,2};
 		//reverseOrder(arr);
-		//int[] newArr = generateDistinctItemsList(5);
-		int[] arr1 = {1,2,3,4,5,6,7,8,9};
-		int[] arr2 = {1,2,3,4,5,5,5,5,9};
-		System.out.println(countDifferences(arr1,arr2));
-//		for(int i: newArr){
-//			System.out.println(i + "");
-//		}
+		int[] newArr = generateDistinctItemsList(5);
+//		int[] arr1 = {1,2,3,4,5,6,7,8,9};
+//		int[] arr2 = {1,2,3,4,5,5,5,5,9};
+//		System.out.println(countDifferences(arr1,arr2));
+		for(int i: newArr){
+			System.out.println(i + "");
+		}
 		//System.out.println(searchSorted(arr,3));
 	}
 
