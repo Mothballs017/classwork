@@ -13,17 +13,20 @@ public class ArraysMethod {
 		 * DO NOT spend hours and hours trying to fix perfect code just because my test
 		 * says that it isn't perfect!
 		 * */
-		int[] testArray = {2,3,3,4,6,9,11,12,15};
-		int[] arr = {15,12,11,9,6,4,3,3,2};
-		reverseOrder(arr);
-		int[] newArr = generateDistinctItemsList(5);
-		for(int i: newArr){
-			System.out.println(i + "");
-		}
+		//int[] testArray = {2,3,3,4,6,9,11,12,15};
+		//int[] arr = {15,12,11,9,6,4,3,3,2};
+		//reverseOrder(arr);
+		//int[] newArr = generateDistinctItemsList(5);
+		int[] arr1 = {1,2,3,4,5,6,7,8,9};
+		int[] arr2 = {1,2,3,4,5,5,5,5,9};
+		System.out.println(countDifferences(arr1,arr2));
+//		for(int i: newArr){
+//			System.out.println(i + "");
+//		}
 		//System.out.println(searchSorted(arr,3));
 	}
 
-	public static int searchUnsorted(int[] arrayToSearch, int key){
+	public static int searchUnsorted(int[] arrayToSearch, int key){//fin
 		//take array, for each item, if it equals key, add 1, add to repeat Array
 		//for each item in repeat Array, if over 0, then print item -1;
 		int index = 0;
@@ -46,7 +49,7 @@ public class ArraysMethod {
 		//find out how to remove doubles
 	}
 
-	public static int searchSorted(int[] sortedArrayToSearch, int key){
+	public static int searchSorted(int[] sortedArrayToSearch, int key){//fin
 		/**
 		 * this method is exactly like the one above, except the parameter sortedArrayToSearch will
 		 * always be sorted in DESCENDING order. Again return the index of the key or return -1
@@ -65,7 +68,7 @@ public class ArraysMethod {
 		//fix doubles
 	}
 
-	public static boolean isSorted(int[] array){
+	public static boolean isSorted(int[] array){//fin
 		/**
 		 * This method takes an in array as a parameter and returns 'true' if the array is already sorted in DESCENDING order
 		 * */
@@ -104,7 +107,7 @@ public class ArraysMethod {
 		return stats;
 	}
 
-	public static void reverseOrder(int[] array){
+	public static void reverseOrder(int[] array){//fin
 		/**
 		 * this method reverses the order of the array passed to it.
 		 * Not that this method does not have a return type. You do not need to copy the array first
@@ -134,7 +137,13 @@ public class ArraysMethod {
 		 * countDifferences({1,2,3},{1,3,2}) returns 2, since '2' and '3' are both present, but different locations
 		 * 
 		 * */
-		return 0;
+		int same = 0;
+		for(int i = 0; i < array1.length; i++){
+			if(array1[i] == array2[i]){
+				same++;
+			}
+		}
+		return same;
 	}
 
 
@@ -152,7 +161,7 @@ public class ArraysMethod {
 		return 0;
 	}
 
-	public static int longestSharedSequence(int[] array1, int[] array2){
+	public static int longestSharedSequence(int[] array1, int[] array2){//fin
 		/**This method counts the longest unbroken, shared sequence in TWO arrays.
 		 * The sequence does NOT have to be a consecutive sequence
 		 * It does NOT matter where the sequence begins, the arrays might not be the same length
@@ -226,7 +235,7 @@ public class ArraysMethod {
 
 	}
 
-	public static int[] generateDistinctItemsList(int n){
+	public static int[] generateDistinctItemsList(int n){//fin
 		/**
 		 * This method needs to generate an int[] of length n that contains distinct, random integers
 		 * between 1 and 2n 
@@ -252,7 +261,7 @@ public class ArraysMethod {
 	}
 
 
-	public static void cycleThrough(int[] array, int n){
+	public static void cycleThrough(int[] array, int n){//fin
 		/** This problem represents people moving through a line.
 		 * Once they get to the front of the line, they get what they've been waiting for, then they 
 		 * immediately go to the end of the line and "cycle through" again.
