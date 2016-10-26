@@ -137,13 +137,13 @@ public class ArraysMethod {
 		 * countDifferences({1,2,3},{1,3,2}) returns 2, since '2' and '3' are both present, but different locations
 		 * 
 		 * */
-		int same = 0;
+		int diff = 0;
 		for(int i = 0; i < array1.length; i++){
-			if(array1[i] == array2[i]){
-				same++;
+			if(array1[i] != array2[i]){
+				diff++;
 			}
 		}
-		return same;
+		return diff;
 	}
 
 
