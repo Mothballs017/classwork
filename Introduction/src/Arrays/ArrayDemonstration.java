@@ -27,20 +27,45 @@ public class ArrayDemonstration {
 //		else{
 //			System.out.println("The number you are searching for is greater than or equal to the value in the middle of the array");
 //		}
-		double[] decArr = {0.1,1.1,2.0,3.3,4.5};
-		int[] arr = {3,9,6,11,3,9,6,11,14,16,11,3,11,3,9,6,11};
-		int[] sub = {6,11};
-		int[] subArr = getSubArray(arr,12,16);
+//		double[] decArr = {0.1,1.1,2.0,3.3,4.5};
+//		int[] arr = {3,9,6,11,3,9,6,11,14,16,11,3,11,3,9,6,11};
+//		int[] sub = {6,11};
+//		int[] subArr = getSubArray(arr,12,16);
 //		int[] cycled = cycleOnce(arr);
 //		for(int i = 0; i < arr.length; i++){
 //			System.out.println(cycled[i]);
 //		}
 //		System.out.println(countUnderBound(decArr,4.0));
 //		System.out.println(Arrays.toString(subArr)+"");
-		System.out.println(contains(arr, subArr));
-		selectionSort(arr);
+//		System.out.println(contains(arr, subArr));
+//		selectionSort(arr);
+		testPrimes(50);
 	}
 	
+	private static void testPrimes(int numberToTest){
+		int lastToCheck = (int)Math.sqrt(numberToTest);
+		boolean[] theNumbers = new boolean [numberToTest];
+		for(int i = 0; i < numberToTest; i++){
+			theNumbers[i] = true;
+		}
+		theNumbers[0] = false;
+		theNumbers[1] = false;
+		int increment = 2;
+		for(int test = 2; test < numberToTest; test = test+increment){
+			boolean first = true;
+			if(first == true){
+				theNumbers[test] = false;
+			}
+			else{
+				first = false;
+			}
+		}
+		for(int i = 0; i<theNumbers.length;i++){
+			if(theNumbers[i]){
+				System.out.println(i+" is prime.");
+			}
+		}
+	}
 	
 	private static int[] randomArrayWithNoRepeat (int[] arr){
 		int[] newArr = new int[arr.length];
