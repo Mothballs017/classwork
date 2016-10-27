@@ -13,19 +13,19 @@ public class ArraysMethod {
 		 * DO NOT spend hours and hours trying to fix perfect code just because my test
 		 * says that it isn't perfect!
 		 * */
-//		double[] arr = {1.0,2.0,3.0,4.0,5.0};
-//		double[] arrT = getStats(arr);
-//		for(double i: arrT){
-//			System.out.println(i + "");
+////		double[] arr = {1.0,2.0,3.0,4.0,5.0};
+////		double[] arrT = getStats(arr);
+////		for(double i: arrT){
+////			System.out.println(i + "");
+////		}
+//		//		for(int i: newArr){
+//		//			System.out.println(i + "");
+//		//>>>>>>> branch 'master' of https://github.com/Mothballs017/classwork.git
+//		//		}
+//		//System.out.println(searchSorted(arr,3));
+//		for(int i : generateDistinctItemsList(5)){
+//			System.out.println(i+"");
 //		}
-		//		for(int i: newArr){
-		//			System.out.println(i + "");
-		//>>>>>>> branch 'master' of https://github.com/Mothballs017/classwork.git
-		//		}
-		//System.out.println(searchSorted(arr,3));
-		for(int i : generateDistinctItemsList(5)){
-			System.out.println(i+"");
-		}
 	}
 
 	public static int searchUnsorted(int[] arrayToSearch, int key){//fin
