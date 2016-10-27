@@ -13,18 +13,19 @@ public class ArraysMethod {
 		 * DO NOT spend hours and hours trying to fix perfect code just because my test
 		 * says that it isn't perfect!
 		 * */
-		//int[] testArray = {2,3,3,4,6,9,11,12,15};
-		//int[] arr = {15,12,11,9,6,4,3,3,2};
-		//reverseOrder(arr);
-		//int[] newArr = generateDistinctItemsList(5);
-		int[] arr1 = {1,2,10,4,5,6,7,8,9,10};
-		int[] arr2 = {1,2,3,4,5,5,5,5,9};
-		reverseOrder(arr1);
-		//System.out.println(countDifferences(arr1,arr2));
-		for(int i: arr1){
-			System.out.println(i);
-		}
+//		double[] arr = {1.0,2.0,3.0,4.0,5.0};
+//		double[] arrT = getStats(arr);
+//		for(double i: arrT){
+//			System.out.println(i + "");
+//		}
+		//		for(int i: newArr){
+		//			System.out.println(i + "");
+		//>>>>>>> branch 'master' of https://github.com/Mothballs017/classwork.git
+		//		}
 		//System.out.println(searchSorted(arr,3));
+		for(int i : generateDistinctItemsList(5)){
+			System.out.println(i+"");
+		}
 	}
 
 	public static int searchUnsorted(int[] arrayToSearch, int key){//fin
@@ -105,6 +106,46 @@ public class ArraysMethod {
 		 * index 5 = the number of values below the mean
 		 * */
 		double[] stats = new double[6];
+		double[] arr = array;
+		double mean = 0.0;
+		double max = 0.0;
+		double min = array[0];
+		double median = 0.0;
+		for(int i = 0; i < array.length; i++){
+			mean = mean + array[i];
+		}
+		stats[0] = mean/array.length;
+		for(int i=0; i< array.length; i++)
+		{
+			if(array[i] > max){
+				max = array[i];
+			}
+			else if(array[i] < min){
+				min = array[i];
+			}
+		}
+		stats[1] = max;
+		stats[2] = min;
+		for(int i = 0; i < arr.length - 1; i++){
+			int tempLowIndex = i;
+			for (int j = i + 1; j < arr.length; j++){
+				if (arr[j] < arr[tempLowIndex]){
+					tempLowIndex = j;
+				}
+			}
+			if(tempLowIndex!=i){
+				dSwap(arr, tempLowIndex, i);
+			} 
+		}
+		int middle = array.length/2;
+		if (array.length%2 == 1) {
+			median = array[middle];
+		} else {
+			median = (array[middle-1] + array[middle]) / 2.0;
+		}
+		stats[3] = median;
+		stats[4] = dCountOverBound(arr,stats[0]);
+		stats[5] = dCountUnderBound(arr,stats[0]);
 		return stats;
 	}
 
@@ -158,8 +199,20 @@ public class ArraysMethod {
 		 * longestSequence({0,9,10,11,4,3,8,9}) returns '3', since '9,10,11' is 3 integers long
 		 * longestSequence({0,9,8,11,4,3,7,9}) returns '1', since there are no consecutive integers
 		 * */
-
-		return 0;
+		int maxed = 1;
+		int onSeq = 1;
+		for(int i = 0; i < array1.length -1; i++){
+			if(array1[i] == array1[i+1]-1){
+				onSeq++;
+			}
+			else{
+				onSeq = 1;
+			}
+			if(onSeq > maxed){
+				maxed = onSeq;
+			}
+		}
+		return maxed;
 	}
 
 	public static int longestSharedSequence(int[] array1, int[] array2){//fin
@@ -244,21 +297,19 @@ public class ArraysMethod {
 		 * contains only entries between 1 and 2n (inclusive) and has no duplicates
 		 * 
 		 * */
-		Random rng = new Random();
-
-	    int[] result = new int[n];
-	    int cur = 0;
-	    int nSub = n;
-	    int remaining = (2*n) - 1;
-	    for (int i = 0; i < (2*n) ; i++) {
-	        double probability = rng.nextDouble();
-	        if (probability < ((double) nSub) / (double) remaining) {
-	            nSub--;
-	            result[cur++] = i;
-	        }
-	        remaining--;
-	    }
-	    return result;
+		int[] listed = new int[2*n];
+    	int[] array = new int[n];
+    	int randNum = 0;
+    	for(int i = 0; i < listed.length; i++){
+    		listed[i] = i+1;
+    	}
+    	for(int i = 0; i < array.length; i++){
+    		randNum = (int)Math.random()*(listed.length);
+    		array[i] = listed[randNum];
+    		listed = removeInt(randNum, listed);
+    	}
+        return array;
+		
 	}
 
 
@@ -294,31 +345,45 @@ public class ArraysMethod {
 		arr[j] = arr[i];
 		arr[i] = placeholder;
 	}
+	private static void dSwap(double[] arr, int i, int j) {
+		double placeholder = arr[j];
+		arr[j] = arr[i];
+		arr[i] = placeholder;
+	}
 	private static int[] cycleOnce(int[] array){
 		for(int i = 0; i < array.length-1; i++){
 			swap(array,i, i+1);
 		}
 		return array;
 	}
-	private static int randInt(int min, int max) {
-		Random gen = new Random();
-		int randomNum = gen.nextInt((max - min) + 1) + min;
-
-		return randomNum;
+	private static double dCountOverBound(double[] arr, double d){
+		double num = 0.0;
+		for(int i = 0; i < arr.length; i++){
+			if(arr[i] > d){
+				num++;
+			}
+		}
+		return num;
 	}
-	private static int countUnderBound(int[] arr, int d){
-		//returns number of elements in arr less than d
-		int num = 0;
+	private static double dCountUnderBound(double[] arr, double d){
+		double num = 0.0;
 		for(int i = 0; i < arr.length; i++){
 			if(arr[i] < d){
 				num++;
 			}
 		}
 		return num;
-		//to get median, (arr.length/2 - 1 + arr.length/2)/2
 	}
-
-
+    private static int[] removeInt(int num, int[] array){
+    	int[] arr = new int[array.length - 1];
+    	for(int i = 0; i < num; i++){
+    		arr[i] = array[i];
+    	}
+    	for(int k = num + 1; k < array.length; k++){
+    		arr[k-1] = array[k];
+    	}
+    	return arr;
+    }
 }
 
 

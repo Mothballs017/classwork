@@ -77,10 +77,10 @@ public class ArrayDemonstration {
 		    }
 		   if(tempLowIndex!=i){
 		         swap(array, tempLowIndex, i);
-		         System.out.println("becomes "+Arrays.toString(array));
+		        // System.out.println("becomes "+Arrays.toString(array));
 		   } 
 		   }//end for
-		System.out.println("Ends as "+Arrays.toString(array));
+		//System.out.println("Ends as "+Arrays.toString(array));
 		}//end method
 	
 	public static int countUnderBound(double[] arr, double d){
