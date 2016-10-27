@@ -41,6 +41,27 @@ public class ArrayDemonstration {
 		selectionSort(arr);
 	}
 	
+	
+	private static int[] randomArrayWithNoRepeat (int[] arr){
+		int[] newArr = new int[arr.length];
+		for(int i = 0; i < newArr.length; i++){
+			int add = arr[(int)Math.random() * arr.length];
+			while(indexOf(arr,add) > -1){
+				add = arr[(int)Math.random()*arr.length];
+			}
+			newArr[i] = add;
+		}
+		return newArr;
+	}
+	private static int indexOf(int[] arr, int add) {
+		for(int i = 0; i < arr.length; i++){
+			if(arr[i] == add){
+				return i;
+			}
+		}
+			return -1;
+	}
+	
 	private static boolean contains(int[] arr, int[] subArray){
 		for(int i = 0; i < arr.length; i++){
 				int j = 0;
