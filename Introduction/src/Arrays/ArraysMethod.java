@@ -17,12 +17,13 @@ public class ArraysMethod {
 		//int[] arr = {15,12,11,9,6,4,3,3,2};
 		//reverseOrder(arr);
 		//int[] newArr = generateDistinctItemsList(5);
-		int[] arr1 = {1,2,3,4,5,6,7,8,9};
+		int[] arr1 = {1,2,10,4,5,6,7,8,9,10};
 		int[] arr2 = {1,2,3,4,5,5,5,5,9};
-		System.out.println(countDifferences(arr1,arr2));
-//		for(int i: newArr){
-//			System.out.println(i + "");
-//		}
+		reverseOrder(arr1);
+		//System.out.println(countDifferences(arr1,arr2));
+		for(int i: arr1){
+			System.out.println(i);
+		}
 		//System.out.println(searchSorted(arr,3));
 	}
 
@@ -120,7 +121,7 @@ public class ArraysMethod {
 		 * array = {-6, 16, 10, 9, 1, 5}
 		 * 
 		 * */
-		for(int i = 1; i < (array.length+1)/2; i++){
+		for(int i = 1; i < (array.length+1)/2+1; i++){
 			swap(array,i-1,array.length-i);
 		}
 		//see cycleOnce
