@@ -13,35 +13,35 @@ public class ArrayDemonstration {
 
 	public static void main(String[] args) {
 
-//		populateArray(numArray);
-//		populateRandomArray(randomArray);
-//		populateDieArray(dieArray);
-//		populateResultsArray(dieArray);
-//		printResults(resultsArray);
-//		listDeck(cardArray);
-//		System.out.println(checkHalfway(testArray,12,0,testArray.length-1));
-//		swap(testArray,0,testArray.length-1);
-//		if(checkHalfway(testArray,12,0,testArray.length-1)){
-//			System.out.println("The number you are searching for is less than the value in the middle of the array");
-//		}
-//		else{
-//			System.out.println("The number you are searching for is greater than or equal to the value in the middle of the array");
-//		}
-//		double[] decArr = {0.1,1.1,2.0,3.3,4.5};
-//		int[] arr = {3,9,6,11,3,9,6,11,14,16,11,3,11,3,9,6,11};
-//		int[] sub = {6,11};
-//		int[] subArr = getSubArray(arr,12,16);
-//		int[] cycled = cycleOnce(arr);
-//		for(int i = 0; i < arr.length; i++){
-//			System.out.println(cycled[i]);
-//		}
-//		System.out.println(countUnderBound(decArr,4.0));
-//		System.out.println(Arrays.toString(subArr)+"");
-//		System.out.println(contains(arr, subArr));
-//		selectionSort(arr);
+		//		populateArray(numArray);
+		//		populateRandomArray(randomArray);
+		//		populateDieArray(dieArray);
+		//		populateResultsArray(dieArray);
+		//		printResults(resultsArray);
+		//		listDeck(cardArray);
+		//		System.out.println(checkHalfway(testArray,12,0,testArray.length-1));
+		//		swap(testArray,0,testArray.length-1);
+		//		if(checkHalfway(testArray,12,0,testArray.length-1)){
+		//			System.out.println("The number you are searching for is less than the value in the middle of the array");
+		//		}
+		//		else{
+		//			System.out.println("The number you are searching for is greater than or equal to the value in the middle of the array");
+		//		}
+		//		double[] decArr = {0.1,1.1,2.0,3.3,4.5};
+		//		int[] arr = {3,9,6,11,3,9,6,11,14,16,11,3,11,3,9,6,11};
+		//		int[] sub = {6,11};
+		//		int[] subArr = getSubArray(arr,12,16);
+		//		int[] cycled = cycleOnce(arr);
+		//		for(int i = 0; i < arr.length; i++){
+		//			System.out.println(cycled[i]);
+		//		}
+		//		System.out.println(countUnderBound(decArr,4.0));
+		//		System.out.println(Arrays.toString(subArr)+"");
+		//		System.out.println(contains(arr, subArr));
+		//		selectionSort(arr);
 		testPrimes(50);
 	}
-	
+
 	private static void testPrimes(int numberToTest){
 		int lastToCheck = (int)Math.sqrt(numberToTest);
 		boolean[] theNumbers = new boolean [numberToTest];
@@ -50,14 +50,16 @@ public class ArrayDemonstration {
 		}
 		theNumbers[0] = false;
 		theNumbers[1] = false;
-		int increment = 2;
-		for(int test = 2; test < numberToTest; test = test+increment){
-			boolean first = true;
-			if(first == true){
-				theNumbers[test] = false;
-			}
-			else{
-				first = false;
+		for(int prime = 2; prime <= lastToCheck; prime++){
+			//when checking 50 numbers, tests 2,3,4,5,6,7 as if prime
+			if(theNumbers[prime]){
+				//only checks numbers that are prime (numbers that haven't been "crossed off")
+				//won't check 4,6 because crossed off by 2
+				System.out.println("\n"+prime+" is prime. Crossing off: ");
+				for(int test = prime+prime; test < numberToTest; test = test+prime){
+					System.out.print(test+", ");
+					theNumbers[test] = false;
+				}
 			}
 		}
 		for(int i = 0; i<theNumbers.length;i++){
@@ -66,7 +68,7 @@ public class ArrayDemonstration {
 			}
 		}
 	}
-	
+
 	private static int[] randomArrayWithNoRepeat (int[] arr){
 		int[] newArr = new int[arr.length];
 		for(int i = 0; i < newArr.length; i++){
@@ -84,25 +86,25 @@ public class ArrayDemonstration {
 				return i;
 			}
 		}
-			return -1;
+		return -1;
 	}
-	
+
 	private static boolean contains(int[] arr, int[] subArray){
 		for(int i = 0; i < arr.length; i++){
-				int j = 0;
-				while(j < subArray.length){
-					if(subArray[j] == arr[i+j] && j == subArray.length -1){
-						return true;
-					}
-					else if(subArray[j] != arr[i+j]){
-						break;
-					}
-					j++;
+			int j = 0;
+			while(j < subArray.length){
+				if(subArray[j] == arr[i+j] && j == subArray.length -1){
+					return true;
 				}
+				else if(subArray[j] != arr[i+j]){
+					break;
+				}
+				j++;
+			}
 		}
 		return false;
 	}
-	
+
 	private static int[] getSubArray(int[] arr, int startIndex, int endIndex){
 		int[] subArray = new int[endIndex - startIndex + 1];
 		for(int i = 0; i < subArray.length; i++){
@@ -110,25 +112,25 @@ public class ArrayDemonstration {
 		}
 		return subArray;
 	}
-	
+
 	//free!!!!
 	private static void selectionSort(int[] array){
 		System.out.println("Selection sort with "+Arrays.toString(array));
 		for (int i = 0; i < array.length - 1; i++){
-		    int tempLowIndex = i;
-		    for (int j = i + 1; j < array.length; j++){
-		        if (array[j] < array[tempLowIndex]){
-		            tempLowIndex = j;
-		        }
-		    }
-		   if(tempLowIndex!=i){
-		         swap(array, tempLowIndex, i);
-		        // System.out.println("becomes "+Arrays.toString(array));
-		   } 
-		   }//end for
+			int tempLowIndex = i;
+			for (int j = i + 1; j < array.length; j++){
+				if (array[j] < array[tempLowIndex]){
+					tempLowIndex = j;
+				}
+			}
+			if(tempLowIndex!=i){
+				swap(array, tempLowIndex, i);
+				// System.out.println("becomes "+Arrays.toString(array));
+			} 
+		}//end for
 		//System.out.println("Ends as "+Arrays.toString(array));
-		}//end method
-	
+	}//end method
+
 	public static int countUnderBound(double[] arr, double d){
 		//returns number of elements in arr less than d
 		int num = 0;
@@ -140,14 +142,14 @@ public class ArrayDemonstration {
 		return num;
 		//to get median, (arr.length/2 - 1 + arr.length/2)/2
 	}
-	
+
 	private static int[] cycleOnce(int[] array){
 		for(int i = 0; i < array.length-1; i++){
 			swap(array,i, i+1);
 		}
 		return array;
 	}
-	
+
 	private static void shuffle(int[] arr) {
 		for(int i = 0; i<arr.length; i++){
 			int random = (int)(Math.random()*arr.length);
@@ -160,7 +162,7 @@ public class ArrayDemonstration {
 		arr[j] = arr[i];
 		arr[i] = placeholder;
 	}
-	
+
 	/**
 	 * returns true if searchValue is less than element
 	 * halfway between beginning and end
@@ -221,14 +223,14 @@ public class ArrayDemonstration {
 			//System.out.println(array[i]);
 		}
 	}
-	
+
 	private static void populateResultsArray(int[] numsRolled){
 
 		for(int i = 0; i < numsRolled.length; i++){
 			resultsArray[numsRolled[i]-2]++;
 		}
 	}
-	
+
 	private static void printResults(int[] array){
 		for(int i = 0; i < array.length; i++){
 			System.out.println(i+1+" is rolled "+((double) array[i]/dieArray.length*100)+"% of the time.");
