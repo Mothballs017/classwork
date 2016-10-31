@@ -40,6 +40,13 @@ public class ArrayDemonstration {
 		//		System.out.println(contains(arr, subArr));
 		//		selectionSort(arr);
 		testPrimes(50);
+		String[] letters = {"A","B","C"};
+		String[] numbers = {"1","2","3"};
+		for( int i=0; i<6; i+=2){
+			for(int j=numbers.length-1; j>=0; j--){
+				System.out.print(letters[i%3]+numbers[j]+" ");
+			}
+		}
 	}
 
 	private static void testPrimes(int numberToTest){
