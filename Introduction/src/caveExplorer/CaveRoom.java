@@ -49,30 +49,27 @@ public class CaveRoom {
 		}
 
 	}
-
+	private String toDirection(int dir) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	public String getContents(){
 		return contents;
 	}
-
 	public void enter(){
 		contents = " X ";
 	}
-
 	public void leave(){
 		contents = defaultContents;
 	}
-
 	public void setDefaultContents(String symbol){
 		defaultContents = symbol;
 	}
-
-
 	public void addRoom(int direction, CaveRoom anotherRoom, Door door){
 		borderingRooms[direction] = anotherRoom;
 		doors[direction] = door;
 		setDirections();
 	}
-
 	/**
 	 * Gives this room access to anotherRoom (and vice-versa) and
 	 * sets a door between them, and updates the directions
@@ -84,7 +81,6 @@ public class CaveRoom {
 		addRoom(direction, anotherRoom, door);
 		anotherRoom.addRoom(oppositeDirection(direction), this, door);
 	}
-
 	/**
 	 * 
 	 * @param dir
@@ -93,22 +89,18 @@ public class CaveRoom {
 	public static int oppositeDirection(int dir){
 		return (dir+2)%4;
 	}
-
-
 	public String getDescription(){
 		return description+directions;
 	}
-
-
-
-
 	public Door getDoor(int dir){
 		return doors[dir];
 	}
-
-
 	public void setDescription(String string) {
 		description = string;
+	}
+	public void interpretInput(String input) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
