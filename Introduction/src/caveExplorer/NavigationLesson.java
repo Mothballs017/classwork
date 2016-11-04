@@ -13,7 +13,7 @@ public class NavigationLesson {
 		arr2D = new String[5][4];
 		pic = new String[5][4];
 		for(int row = 0; row < arr2D.length; row++){
-//			populate with cooridnates
+//			populate with coordinates
 			for(int col = 0; col < arr2D[row].length; col++){
 				arr2D[row][col] = "("+row+","+col+")";
 			}
