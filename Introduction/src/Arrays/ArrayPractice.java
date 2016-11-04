@@ -22,6 +22,7 @@ public class ArrayPractice {
 		while(numberOfMines > 0){
 			int row = (int)(Math.random()*mines.length);
 			int col = (int)(Math.random()*mines[0].length);
+//			System.out.print(numberOfMines);
 			if(!mines[row][col]){
 				mines[row][col] = true;
 				numberOfMines--;
@@ -44,18 +45,47 @@ public class ArrayPractice {
 //		r and c represent coordinates of element
 //		we are providing a String for
 		int count = 0;
+		
 //		loop through row above to row below
-		for(int row = r - 1; row <= r+1; row++){
-//			loop through col left to col right
-			for(int col = c - 1; col <= c + 1; col++){
-//				exclude this element when counting
-				if(row != r && col != c){
-					if(row >= 0 &&)
-				}
-			}
+//		for(int row = r - 1; row <= r+1; row++){
+////			loop through col left to col right
+//			for(int col = c - 1; col <= c + 1; col++){
+////				exclude this element when counting
+//				if(row != r && col != c){
+//					if(row >= 0 && row < mines.length && col >= 0 && col < mines[row].length){
+//						count++;
+//					}
+//				}
+//			}
+//
+//		}
+//		above
+		count += validAndTrue(mines,r-1,c);
+//		below
+		count += validAndTrue(mines,r+1,c);
+//		right
+		count += validAndTrue(mines,r,c+1);
+//		left
+		count += validAndTrue(mines,r,c-1);
+//		this method only checks elements in the [][] so it is not necessary to verify that they are valid
+//		for(int row = 0; row < mines.length; row++){
+//			for(int col = 0; col < mines[row].length; col++){
+////				check taxi cab distance
+//				if(Math.abs(row-r)+Math.abs(col-c) ==  1 && mines[row][col]){
+//					count++;
+//				}
+//			}
+//		}
+//		helpful when you want to be very specific
+		return count + "";
+	}
 
+	private static int validAndTrue(boolean[][] mines, int i, int j) {
+//		clears logic
+		if(i >= 0 && i < mines.length && j >=0 && j < mines[0].length && mines[i][j]){
+			return 1;
 		}
-		return null;
+		else return 0;
 	}
 
 	private static void printSun(){
@@ -113,7 +143,7 @@ public class ArrayPractice {
 	public static void printImage(String[][] pic){
 		printMan();
 		printBird();
-		//printHouse();
+		printHouse();
 		printSun();
 
 		for(int col = 0; col < pic[0].length; col++){
@@ -140,8 +170,9 @@ public class ArrayPractice {
 	public static void printPic(String[][] pic){
 		for(int row = 0; row < pic.length; row++){
 			for(int col = 0; col < pic[row].length; col++){
-				pic[row][col] = " ";
+				System.out.print(pic[row][col]);
 			}
+			System.out.println();
 		}
 	}
 
