@@ -13,7 +13,10 @@ public class CaveMapTest {
 	public static void printImage(String[][] pic){
 		for(int row = 0; row < pic.length; row++){
 			for(int col = 0; col < pic[row].length; col++){
-				pic[row][col] = " ";
+				if(row % 2==1){
+					pic[row][col] = "_";
+				}
+				pic[row][col] = "|";
 			}
 		}
 		for(int col = 0; col < pic[0].length; col++){
