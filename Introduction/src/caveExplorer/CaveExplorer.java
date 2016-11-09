@@ -7,7 +7,7 @@ public class CaveExplorer {
 	public static CaveRoom caves[][];
 	public static Scanner in;
 	public static CaveRoom currentRoom;
-	private static Inventory inventory;
+	public static Inventory inventory;
 
 	public static void main(String[] args){
 		caves = new CaveRoom[5][5];

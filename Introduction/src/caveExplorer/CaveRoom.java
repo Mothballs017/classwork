@@ -21,7 +21,7 @@ public class CaveRoom {
 
 	public CaveRoom(String description){
 		this.description = description;
-		setDefaultContents("   ");
+		setDefaultContents(" ");
 		contents = defaultContents;
 
 		borderingRooms = new CaveRoom[4];
@@ -50,14 +50,14 @@ public class CaveRoom {
 
 	}
 	private String toDirection(int dir) {
-		// TODO Auto-generated method stub
-		return null;
+		String[] directions = {"the North","the East","the South","the West"};
+		return directions[dir];
 	}
 	public String getContents(){
 		return contents;
 	}
 	public void enter(){
-		contents = " X ";
+		contents = "X";
 	}
 	public void leave(){
 		contents = defaultContents;
@@ -99,8 +99,33 @@ public class CaveRoom {
 		description = string;
 	}
 	public void interpretInput(String input) {
-		// TODO Auto-generated method stub
-		
+		while(!isValid(input)){
+			System.out.println("You can only enter "+"'w','a','s', or 'd'.");
+			input = CaveExplorer.in.nextLine();
+		}
+		String[] keys = {"w","a","s","d"};
+		int indexFound = -1;
+		for(int i = 0; i < keys.length; i++){
+			if(input.equals(keys[i])){
+				indexFound = i;
+				break;
+			}
+		}
+		if(borderingRooms[indexFound] != null && doors[indexFound].isOpen()){
+			CaveExplorer.currentRoom.leave();
+			CaveExplorer.currentRoom = borderingRooms[indexFound];
+			CaveExplorer.currentRoom.enter();
+			CaveExplorer.inventory.updateMap();
+		}
+	}
+
+	private boolean isValid(String s) {
+		String lc = s.toLowerCase();
+		String[] keys = {"w","a","s","d"};
+		for(String key:keys){
+			if(key.equals(lc))return true;
+		}
+		return false;
 	}
 
 

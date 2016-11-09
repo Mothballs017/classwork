@@ -7,9 +7,9 @@ public class CaveMapTest {
 	static String[][] pic = new String[10][13];
 
 	public static void main(String[] args){
-		printImage(pic);
-		
-		printPic(pic);
+//		printImage(pic);
+//		
+//		printPic(pic);
 	}
 	
 	public static void printImage(String[][] pic){
