@@ -6,7 +6,7 @@ public class Inventory {
 	private String map;
 	
 	public Inventory(){
-		hasMap = true;
+		hasMap = false;
 		updateMap();
 	}
 	public void updateMap() {
@@ -21,9 +21,12 @@ public class Inventory {
 				//a line of text for each room
 				String text = "";
 				for(CaveRoom cr: row){
-					text = "|";
+					//text = "|";
 					if(cr.getDoor(CaveRoom.WEST) != null && cr.getDoor(CaveRoom.WEST).isOpen()){
 						text += " ";
+					}
+					else{
+						text += "|";
 					}
 					if(i == 0){
 						text += "   ";//3

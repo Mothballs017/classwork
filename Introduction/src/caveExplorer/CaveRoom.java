@@ -103,7 +103,7 @@ public class CaveRoom {
 			System.out.println("You can only enter "+"'w','a','s', or 'd'.");
 			input = CaveExplorer.in.nextLine();
 		}
-		String[] keys = {"w","a","s","d"};
+		String[] keys = {"w","d","s","a"};
 		int indexFound = -1;
 		for(int i = 0; i < keys.length; i++){
 			if(input.equals(keys[i])){
@@ -111,14 +111,18 @@ public class CaveRoom {
 				break;
 			}
 		}
-		if(borderingRooms[indexFound] != null && doors[indexFound].isOpen()){
+		goToRoom(indexFound);
+	}
+
+	public void goToRoom(int direction){
+		if(borderingRooms[direction] != null && doors[direction].isOpen()){
 			CaveExplorer.currentRoom.leave();
-			CaveExplorer.currentRoom = borderingRooms[indexFound];
+			CaveExplorer.currentRoom = borderingRooms[direction];
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
 		}
 	}
-
+	
 	private boolean isValid(String s) {
 		String lc = s.toLowerCase();
 		String[] keys = {"w","a","s","d"};
