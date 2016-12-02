@@ -24,6 +24,7 @@ public class RecursionIntro {
 			print("Move from "+from+" to "+to);
 		}
 		else{
+			System.out.println("In order to move from ");
 			//move all but the last one to peg B
 			hanoi(numberOfDiscs-1,from,to,mid);
 			//move the last one to C
