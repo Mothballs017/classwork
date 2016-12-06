@@ -1,43 +1,68 @@
 package Arrays;
 
+import java.util.Arrays;
+
 public class ArraysMain {
 
 	public static void main(String[] args) {
 		//this is how you quickly start a computer processes.
+		//		long startTime = System.currentTimeMillis();
+		int[] arr = {2,7,4,1,5,3};
+		bubbleSort(arr);
+		//		SampleElement sample = new SampleElement(10);
+		//		sample.increase();
+		//		System.out.println("The sample element has a number equal to "+sample.getNumber());
+		//		
+		//		long endTime = System.currentTimeMillis();
+		//		System.out.println("Completed method in "+(endTime-startTime)+ " milliseconds.");
+	}
+
+	public static void bubbleSort(int[] array){
 		long startTime = System.currentTimeMillis();
-		
-		SampleElement sample = new SampleElement(10);
-		sample.increase();
-		System.out.println("The sample element has a number equal to "+sample.getNumber());
-		
+		System.out.println("Bubble sort with "+Arrays.toString(array));
+		for(int i=0; i < array.length-1; i++){
+			for(int j=1; j < array.length-i; j++){
+				if(array[j-1] > array[j]){
+					swap(array,j-1,j);
+					System.out.println("becomes "+Arrays.toString(array));
+				}
+			}
+			System.out.println("Ends as "+Arrays.toString(array));
+		}
 		long endTime = System.currentTimeMillis();
 		System.out.println("Completed method in "+(endTime-startTime)+ " milliseconds.");
 	}
 	
+	private static void swap(int[] arr, int i, int j) {
+		int placeholder = arr[j];
+		arr[j] = arr[i];
+		arr[i] = placeholder;
+	}
+
 	private static void passByValueDemonstration(){
 		String[] someStrings = new String[100];
 		populateArray(someStrings);
-		
+
 		int ten = 10;
 		increase(ten);
 		System.out.println("Ten, increased, is "+ ten);
-		
+
 		//in this variable, we pass the ELEMENT
 		//(a variable) not the array, so
 		//no change will be made
 		System.out.println("Before "+someStrings[99]);
 		changeString(someStrings[99]);
 		System.out.println("After \"changeString\" method "+someStrings[99]);
-		
+
 		changeArray(someStrings);
 		System.out.println("After \"changeArray\" method "+someStrings[99]);
-		
+
 		changeArrayElement(someStrings,99);
 		System.out.println("After \"changeArrayElement\" method "+someStrings[99]);
-		
+
 		//printArray(someStrings);
 	}
-	
+
 	private static void changeArrayElement(String[] someStrings, int i){
 		someStrings[i] = "new item "+(i+1);
 	}
@@ -48,7 +73,7 @@ public class ArraysMain {
 			someStrings[i] = "new item "+(i+1);
 		}
 	}
-	
+
 	//this method does nothing, since local variables
 	//are destroyed after the method is complete
 	private static void increase(int ten) {
