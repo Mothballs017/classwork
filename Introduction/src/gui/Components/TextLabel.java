@@ -21,6 +21,7 @@ public class TextLabel extends Component {
 	}
 	
 	public void update(Graphics2D g) {
+		g = clear(); //delete previous text
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 		//renderinghints makes it look nice
 		g.setColor(Color.black);

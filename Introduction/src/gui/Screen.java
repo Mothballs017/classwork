@@ -45,9 +45,9 @@ public abstract class Screen {
 //		smooth the graphics
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		g.setColor(Color.pink);
-//		g.fillRect(0, 0, image.getWidth(), image.getHeight());
-		g.setColor(Color.yellow);
+		g.setColor(Color.white);
+		g.fillRect(0, 0, image.getWidth(), image.getHeight());
+		g.setColor(Color.black);
 //		g.drawString("Hello World", 40, 100);
 //		g.drawOval(22, 70, 100, 50);
 //		for(int i = 0; i<viewObjects.size(); i++){
