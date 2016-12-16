@@ -6,14 +6,14 @@ public class Test2Review {
 
 	private static boolean[][] grid;
 	
-	public static void main(String[] args) {
-		grid = new boolean[5][5];
-		printGrid(grid);
-		buttonClick(3,3);
-		printGrid(grid);
-		buttonClick(3,3);
-		printGrid(grid);
-	}
+//	public static void main(String[] args) {
+//		grid = new boolean[5][5];
+//		printGrid(grid);
+//		buttonClick(3,3);
+//		printGrid(grid);
+//		buttonClick(3,3);
+//		printGrid(grid);
+//	}
 
 	public static void switchColumn(boolean[][] grid, int r, int c) {
 		switchIfValid(grid,r-1,c);

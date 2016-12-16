@@ -3,7 +3,7 @@ package gui;
 import java.awt.Graphics;
 import javax.swing.JFrame;
 
-public abstract class GUIApplication extends JFrame{
+public abstract class GUIApplication extends JFrame implements Runnable{
 
 	private Screen currentScreen;
 	
@@ -24,6 +24,24 @@ public abstract class GUIApplication extends JFrame{
 	
 	public void setScreen(Screen s){
 		currentScreen = s;
+		if(currentScreen != null){
+			addMouseListener(currentScreen.getMouseListener());
+			addMouseMotionListener(currentScreen.getMouseMotionListener());
+		}
+	}
+	
+	public void run(){
+		while(true){
+			//redraws the display
+			currentScreen.update();
+			//update the window
+			repaint();
+			try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
