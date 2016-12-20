@@ -8,35 +8,40 @@ import java.awt.RenderingHints;
 
 public class TextArea extends TextLabel {
 
-	private String text;
-	private String font;
-	private int size;
-	
 	public TextArea(int x, int y, int w, int h, String text) {
 		super(x, y, w, h, text);
 	}
 
 	public void update(Graphics2D g) {
-		g = clear(); //delete previous text
-		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-		//renderinghints makes it look nice
-		g.setColor(Color.black);
-		g.setFont(new Font(font,Font.PLAIN,size));
+		g = clear();
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setFont(new Font(getFont(), Font.PLAIN, getSize()));
 		FontMetrics fm = g.getFontMetrics();
-		String[] words = getText().split(" ");//splits word at every space
-		//w = 80
-		//h = 40
+		g.setColor(Color.black);
 		if(getText()!= null){
-			g.setColor(Color.white);
-			String t = getText();
-			//just in case text is too wide, cut off
-			int cutoff = t.length();
-			while(cutoff > 0 && fm.stringWidth(t) > getWidth()){
-				cutoff --;
-				t = t.substring(0,cutoff); 
+			String[] words = getText().split(" ");//splits word at every space
+			if(words.length > 0){
+				int i = 0;
+				final int SPACING = 2;
+				int y = 0 + fm.getHeight() + SPACING;
+				String line = words[i] + " ";
+				i++;
+				while(i < words.length){//makes more lines
+					//controls a single line of text
+					while(i < words.length && fm.stringWidth(line) + fm.stringWidth(words[i]) < getWidth()){
+						line += words[i]+ " ";
+						i++;
+					}
+					if(y < getHeight()){
+						g.drawString(line, 2, y);
+						y += fm.getDescent() + fm.getHeight() + SPACING;
+						line = "";
+					}
+					else{
+						break; //print no more text
+					}
+				}
 			}
-			g.drawString(t, (getWidth()-fm.stringWidth(t))/2, 
-					(getHeight()+fm.getHeight()-fm.getDescent())/2);
 		}
 }
 }

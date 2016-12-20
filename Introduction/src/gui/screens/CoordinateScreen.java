@@ -5,17 +5,21 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 import gui.Components.Button;
+import gui.Components.TextArea;
 import gui.Components.Action;
 import java.util.ArrayList;
 
 import gui.Screen;
 import gui.Components.TextLabel;
 import gui.Components.Visible;
+import sampleImages.Graphic;
 
 public class CoordinateScreen extends Screen implements MouseMotionListener{
 
 	private Button button;
 	private TextLabel text;
+	private TextArea area;
+	private Graphic bat;
 	
 	public CoordinateScreen(int width, int height) {
 		super(width, height);
@@ -30,8 +34,12 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 				
 			}
 		});
+		area = new TextArea(20, 300, 700, 100, "ajksf asdf sdf sdf sdf scv sdg gv sd wef wsf sc sf sf sdg s sg sdf df sd fs df sdg d");
+		bat = new Graphic(150,30,100,100,"resources/sampleImages/bat.jpg");
 		viewObjects.add(text);
 		viewObjects.add(button);
+		viewObjects.add(area);
+		viewObjects.add(bat);
 	}
 
 	public void mouseDragged(MouseEvent e) {
