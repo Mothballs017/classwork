@@ -5,7 +5,7 @@ import gui.screens.CoordinateScreen;
 
 public class MouseFollower extends GUIApplication{
 
-	private CoordinateScreen cs;
+	public static CoordinateScreen cs;
 	public static MouseFollower game;//only one exists (no one plays three of the same game at the same time)
 	
 	public MouseFollower(int width, int height) {
