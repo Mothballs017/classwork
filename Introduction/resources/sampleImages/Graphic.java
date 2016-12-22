@@ -21,9 +21,9 @@ public class Graphic implements Visible {
 	 * @param imageLocation
 	 */
 	public Graphic(int x, int y, String imageLocation) {
-		this.x = x;
+		this.setX(x);
 		this.y = y;
-		loadedImages = false;
+		setLoadedImages(false);
 		loadImages(imageLocation,0,0);
 	}
 
@@ -36,9 +36,9 @@ public class Graphic implements Visible {
 	 * @param imageLocation
 	 */
 	public Graphic(int x, int y, int w, int h, String imageLocation) {
-		this.x = x;
+		this.setX(x);
 		this.y = y;
-		loadedImages = false;
+		setLoadedImages(false);
 		loadImages(imageLocation,w,h);
 	}
 	
@@ -50,13 +50,13 @@ public class Graphic implements Visible {
 	 * @param imageLocation
 	 */
 	public Graphic(int x, int y, double scale, String imageLocation) {
-		this.x = x;
+		this.setX(x);
 		this.y = y;
-		loadedImages = false;
+		setLoadedImages(false);
 		loadImages(imageLocation, scale);
 	}
 	
-	private void loadImages(String imageLocation, double scale) {
+	protected void loadImages(String imageLocation, double scale) {
 		try{
 			//get full size image
 			ImageIcon icon = new ImageIcon(imageLocation);
@@ -71,7 +71,7 @@ public class Graphic implements Visible {
 		}
 	}
 
-	private void loadImages(String imageLocation, int w, int h) {
+	protected void loadImages(String imageLocation, int w, int h) {
 		try{
 			//full size image
 			ImageIcon icon = new ImageIcon(imageLocation);
@@ -103,7 +103,7 @@ public class Graphic implements Visible {
 				g.drawImage(icon.getImage(), 0, 0, w, h, 0, 0, icon.getIconWidth(), icon.getIconHeight(), null);
 				//use game tile sheets for background
 			}
-			loadedImages = true;
+			setLoadedImages(true);
 		}
 		catch(Exception e){
 			//this happens when you don't name the image correctly
@@ -149,6 +149,21 @@ public class Graphic implements Visible {
 	
 	public void update() {
 		//does nothing. Image stays the same.
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public boolean isLoadedImages() {
+		return loadedImages;
+	}
+
+	public void setLoadedImages(boolean loadedImages) {
+		this.loadedImages = loadedImages;
 	}
 
 }

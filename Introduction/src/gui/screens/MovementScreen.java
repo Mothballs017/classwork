@@ -1,4 +1,4 @@
-package gui.sampleGames;
+package gui.screens;
 
 import java.util.ArrayList;
 
@@ -7,12 +7,12 @@ import gui.Components.TextLabel;
 import gui.Components.Visible;
 import sampleImages.Graphic;
 
-public class MyScreen extends Screen {
+public class MovementScreen extends Screen {
 
 	private Graphic bat;
 	private TextLabel text;
 	
-	public MyScreen(int width, int height) {
+	public MovementScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
 	}

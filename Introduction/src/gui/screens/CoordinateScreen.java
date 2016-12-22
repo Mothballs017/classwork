@@ -41,7 +41,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener,Mous
 				MouseFollower.game.setScreen(MouseFollower.myScreen);
 			}
 		});
-		area = new TextArea(20, 300, 700, 100, "ajksf asdf sdf sdf sdf scv sdg gv sd wef wsf sc sf sf sdg s sg sdf df sd fs df sdg d");
+		area = new TextArea(20, 300, 700, 100, "Click on this to see BATMAN in XL mode");
 		bat = new Graphic(150,30,.5,"resources/sampleImages/bat.jpg");
 		viewObjects.add(text);
 		viewObjects.add(button);
