@@ -21,10 +21,10 @@ public class Graphic implements Visible {
 	 * @param imageLocation
 	 */
 	public Graphic(int x, int y, String imageLocation) {
-		this.setX(x);
+		this.x = x;
 		this.y = y;
-		setLoadedImages(false);
-		loadImages(imageLocation,0,0);
+		loadedImages = false;
+		loadImages(imageLocation, 0,0);
 	}
 
 	/**
@@ -36,10 +36,10 @@ public class Graphic implements Visible {
 	 * @param imageLocation
 	 */
 	public Graphic(int x, int y, int w, int h, String imageLocation) {
-		this.setX(x);
+		this.x = x;
 		this.y = y;
-		setLoadedImages(false);
-		loadImages(imageLocation,w,h);
+		loadedImages = false;
+		loadImages(imageLocation, w, h);
 	}
 	
 	/**
@@ -56,7 +56,7 @@ public class Graphic implements Visible {
 		loadImages(imageLocation, scale);
 	}
 	
-	protected void loadImages(String imageLocation, double scale) {
+	public void loadImages(String imageLocation, double scale) {
 		try{
 			//get full size image
 			ImageIcon icon = new ImageIcon(imageLocation);
@@ -71,7 +71,7 @@ public class Graphic implements Visible {
 		}
 	}
 
-	protected void loadImages(String imageLocation, int w, int h) {
+	public void loadImages(String imageLocation, int w, int h) {
 		try{
 			//full size image
 			ImageIcon icon = new ImageIcon(imageLocation);
