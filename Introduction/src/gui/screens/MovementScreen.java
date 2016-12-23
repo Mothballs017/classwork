@@ -29,7 +29,9 @@ public class MovementScreen extends Screen implements MouseMotionListener,MouseL
 		bat = new ClickableGraphic(100,75,2.0,"resources/sampleImages/bat.jpg");
 		bat.setAction(new Action(){
 			public void act(){
-				MouseFollower.game.setScreen(MouseFollower.cs);
+				//MouseFollower.game.setScreen(MouseFollower.cs);
+				bat.setX(bat.getX()+1);
+				bat.setY(bat.getY()+0);
 			}});
 		text = new TextLabel(300, 450, 500, 40, "NANANANA BATMAN");
 		viewObjects.add(bat);
