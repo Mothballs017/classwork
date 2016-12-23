@@ -30,7 +30,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener,Mous
 
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		text = new TextLabel(20, 200, 500, 40, "Some Text");
+		text = new TextLabel(20, 200, 500, 40, "Batman");
 		//		button = new Button(20,100,80,40,"Button", new Color(100,100,250), new Action() {
 		//			public void act(){
 		//				
@@ -41,12 +41,12 @@ public class CoordinateScreen extends Screen implements MouseMotionListener,Mous
 				MouseFollower.game.setScreen(MouseFollower.myScreen);
 			}
 		});
-		area = new TextArea(20, 300, 700, 100, "Click on this to see BATMAN in XL mode");
-		bat = new Graphic(150,30,.5,"resources/sampleImages/bat.jpg");
+		area = new TextArea(20, 300, 700, 100, "Click on button to see BATMAN in XL mode");
+		//bat = new Graphic(150,30,.5,"resources/sampleImages/bat.jpg");
 		viewObjects.add(text);
 		viewObjects.add(button);
 		viewObjects.add(area);
-		viewObjects.add(bat);
+		//viewObjects.add(bat);
 	}
 
 	public MouseListener getMouseListener(){
