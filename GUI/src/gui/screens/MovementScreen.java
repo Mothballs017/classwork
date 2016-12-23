@@ -26,12 +26,12 @@ public class MovementScreen extends Screen implements MouseMotionListener,MouseL
 
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		bat = new ClickableGraphic(150,30,2.0,"resources/sampleImages/bat.jpg");
+		bat = new ClickableGraphic(100,75,2.0,"resources/sampleImages/bat.jpg");
 		bat.setAction(new Action(){
 			public void act(){
 				MouseFollower.game.setScreen(MouseFollower.cs);
 			}});
-		text = new TextLabel(200, 400, 500, 40, "NANANANA BATMAN");
+		text = new TextLabel(300, 450, 500, 40, "NANANANA BATMAN");
 		viewObjects.add(bat);
 		viewObjects.add(text);
 	}
