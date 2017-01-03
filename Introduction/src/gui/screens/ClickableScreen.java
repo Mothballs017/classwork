@@ -30,7 +30,6 @@ public abstract class ClickableScreen extends Screen implements MouseMotionListe
 			if(i instanceof Clickable){
 				clickables.add((Clickable)i);
 			}
-
 		}
 	}
 
