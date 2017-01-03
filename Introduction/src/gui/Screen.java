@@ -130,6 +130,7 @@ public abstract class Screen {
 			viewObjects.remove(v);
 			//the "back" is index 0
 			viewObjects.add(0,v);
+			//This moves everything else forward in the list
 		}
 	}
 	
