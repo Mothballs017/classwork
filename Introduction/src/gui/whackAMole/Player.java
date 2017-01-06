@@ -19,9 +19,11 @@ public class Player extends Component implements PlayerInterface {
 	}
 
 	public void update(Graphics2D g) {
+		g.setColor(new Color(200,200,255));
+		g.fillOval(0, 0, 99, 99);
 		g.setColor(Color.black);
 		g.drawOval(0, 0, 99, 99);
-		g.drawString("Score = "+score, 40, 55);
+		g.drawString("Score = "+score, 20, 55);
 	}
 
 }
