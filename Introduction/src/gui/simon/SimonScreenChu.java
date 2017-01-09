@@ -1,6 +1,7 @@
 package gui.simon;
 
 import java.awt.Color;
+
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -9,8 +10,6 @@ import gui.Components.Action;
 import gui.Components.TextLabel;
 import gui.Components.Visible;
 import gui.screens.ClickableScreen;
-import gui.whackAMole.MoleInterface;
-import gui.whackAMole.PlayerInterface;
 
 public class SimonScreenChu extends ClickableScreen implements Runnable {
 
@@ -22,7 +21,7 @@ public class SimonScreenChu extends ClickableScreen implements Runnable {
 	boolean acceptingInput;
 	int patternIndex;
 	int lastSelectedButton;
-	
+
 	public SimonScreenChu(int width, int height) {
 		super(width, height);
 		Thread app = new Thread(this);
@@ -64,16 +63,15 @@ public class SimonScreenChu extends ClickableScreen implements Runnable {
 
 	private MoveInterfaceChu randomMove() {
 		ButtonInterfaceChu b;
-		b.setAction(new Action(){
-
-			public void act(){
-				if(acceptingInput){
-					
-				}
+		int randButton = (int)(Math.random()*buttons.length);
+		if(randButton != lastSelectedButton){
+			b = buttons[randButton];
+		}
+		else{
+			while(randButton == lastSelectedButton){
+				randButton = (int)(Math.random()*buttons.length);
 			}
-
-			});
-		//code that randomly selects a ButtonInterfaceX
+		}
 		return getMove(b);
 	}
 
@@ -84,7 +82,7 @@ public class SimonScreenChu extends ClickableScreen implements Runnable {
 
 	/**
 		Placeholder until partner finishes implementation of ProgressInterface
-	*/
+	 */
 	private ProgressInterfaceChu getProgress() {
 		// TODO Auto-generated method stub
 		return null;
@@ -93,13 +91,41 @@ public class SimonScreenChu extends ClickableScreen implements Runnable {
 	private void addButtons() {
 		int numberOfButtons = 5;
 		Color[] colors = {Color.red, Color.blue, Color.green, Color.yellow, Color.orange};
-//		String[] colorNames = {"RED", "BLUE", "GREEN", "YELLOW", "ORANGE"};
 		buttons = new ButtonInterfaceChu[numberOfButtons];
 		for(int i = 0; i < numberOfButtons; i++ ){
 			buttons[i] = getAButton();
 			final ButtonInterfaceChu b = buttons[i];
+			b.setColor(colors[0]);
+			b.setY(40);
+			b.setX(50);
+			b.setAction(new Action(){
+				public void act(){
+					if(acceptingInput){
+						Thread blink = new Thread(new Runnable(){
+							public void run(){
+								b.highlight();
+								Thread dim = new Thread(new Runnable(){
+
+									@Override
+									public void run() {
+										// TODO Auto-generated method stub
+										
+									}
+									
+								});
+							}
+						});
+						blink.start();
+					}
+				}
+			});
 		}
-		
+
+	}
+
+	private ButtonInterfaceChu getAButton() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

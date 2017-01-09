@@ -11,4 +11,5 @@ public interface ButtonInterfaceChu extends Clickable {
 	void setY(int y);
 
 	void setAction(Action a);
+	void highlight();
 }
