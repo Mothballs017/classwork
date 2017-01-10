@@ -13,13 +13,13 @@ import gui.screens.ClickableScreen;
 
 public class SimonScreenChu extends ClickableScreen implements Runnable {
 
-	private ArrayList<MoveInterfaceChu> pattern;
+	private ArrayList<MoveInterfaceChu> sequence;
 	private ButtonInterfaceChu[] buttons;
 	private ProgressInterfaceChu progress;
 	private TextLabel label;
 	int roundNumber;
 	boolean acceptingInput;
-	int patternIndex;
+	int sequenceIndex;
 	int lastSelectedButton;
 
 	public SimonScreenChu(int width, int height) {
@@ -48,30 +48,26 @@ public class SimonScreenChu extends ClickableScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
-		addButtons();
+		addButtons(viewObjects);
 		progress = getProgress();
 		label = new TextLabel(130,230,300,40,"Let's play Simon!");
-		pattern = new ArrayList<MoveInterfaceChu>();
+		sequence = new ArrayList<MoveInterfaceChu>();
 		//add 2 moves to start
 		lastSelectedButton = -1;
-		pattern.add(randomMove());
-		pattern.add(randomMove());
+		sequence.add(randomMove());
+		sequence.add(randomMove());
 		roundNumber = 0;
 		viewObjects.add(progress);
 		viewObjects.add(label);
 	}
 
 	private MoveInterfaceChu randomMove() {
-		ButtonInterfaceChu b;
+		ButtonInterfaceChu b = null;//SUBJECT TO CHANGE
 		int randButton = (int)(Math.random()*buttons.length);
-		if(randButton != lastSelectedButton){
-			b = buttons[randButton];
+		while(randButton != lastSelectedButton){
+			randButton = (int)(Math.random()*buttons.length);
 		}
-		else{
-			while(randButton == lastSelectedButton){
-				randButton = (int)(Math.random()*buttons.length);
-			}
-		}
+		lastSelectedButton = randButton;
 		return getMove(b);
 	}
 
@@ -88,7 +84,7 @@ public class SimonScreenChu extends ClickableScreen implements Runnable {
 		return null;
 	}
 
-	private void addButtons() {
+	private void addButtons(ArrayList<Visible> viewObjects) {
 		int numberOfButtons = 5;
 		Color[] colors = {Color.red, Color.blue, Color.green, Color.yellow, Color.orange};
 		buttons = new ButtonInterfaceChu[numberOfButtons];
@@ -104,23 +100,77 @@ public class SimonScreenChu extends ClickableScreen implements Runnable {
 						Thread blink = new Thread(new Runnable(){
 							public void run(){
 								b.highlight();
-								Thread dim = new Thread(new Runnable(){
-
-									@Override
-									public void run() {
-										// TODO Auto-generated method stub
-										
-									}
-									
-								});
+								try {
+									Thread.sleep(500);
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
+								b.dim();
 							}
 						});
 						blink.start();
 					}
+					if(b == sequence.get(sequenceIndex).getButton()){
+						sequenceIndex++;
+					}
+					else {
+						progress.gameOver();
+					}
+					if(sequenceIndex == sequence.size()){
+						Thread nextRound = new Thread(SimonScreenChu.this);
+						nextRound.start();
+					}
 				}
-			});
-		}
 
+			});
+			viewObjects.add(b);
+		}
+	}
+	
+	public void run1(){
+	    label.setText("");
+	    nextRound();
+	}
+	
+	private void nextRound() {
+		acceptingInput = false;
+		roundNumber++;
+		randomMove();
+		progress.setRound(roundNumber);
+		progress.setSequenceSize(sequence.size());
+		changeText("Simon's turn");
+		label.setText("");
+		playSequence();
+		changeText("Your Turn");
+		acceptingInput = true;
+		sequenceIndex = 0;
+	}
+
+	private void playSequence() {
+		ButtonInterfaceChu b = null;
+		for(MoveInterfaceChu m: sequence){
+			if(b != null){
+				b.dim();
+			}
+			b = m.getButton();
+			b.highlight();
+			int sleepTime = (int)(2000*(2.0/(roundNumber+2)));
+			try {
+				Thread.sleep(sleepTime);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		b.dim();
+	}
+
+	private void changeText(String string) {
+		try{
+			label.setText(string);
+			Thread.sleep(1000);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	private ButtonInterfaceChu getAButton() {
