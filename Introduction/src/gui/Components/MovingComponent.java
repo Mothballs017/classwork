@@ -1,5 +1,6 @@
 package gui.Components;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 public class MovingComponent extends Component implements Runnable {
@@ -94,6 +95,19 @@ public class MovingComponent extends Component implements Runnable {
 			//of a change
 			super.setX((int)posx);//change only x not posx
 			super.setY((int)posy);//change only y not posy
+		}
+		drawImage(g);
+	}
+
+	private void drawImage(Graphics2D g) {
+		g.setColor(Color.black);
+		g.fillOval(0, 0, getWidth(), getHeight());
+	}
+	
+	public void play(){
+		if(!running){
+			Thread go = new Thread(this);
+			go.start();
 		}
 	}
 
