@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import gui.Components.Button;
+import gui.Components.MovingComponent;
 import gui.Components.TextArea;
 import gui.Components.Action;
 import java.util.ArrayList;
@@ -42,11 +43,16 @@ public class CoordinateScreen extends Screen implements MouseMotionListener,Mous
 			}
 		});
 		area = new TextArea(20, 300, 700, 100, "Click on button to see BATMAN in XL mode");
-		//bat = new Graphic(150,30,.5,"resources/sampleImages/bat.jpg");
+		bat = new Graphic(150,30,.5,"resources/sampleImages/bat.jpg");
+		MovingComponent c = new MovingComponent(20,20,100,100);
 		viewObjects.add(text);
 		viewObjects.add(button);
 		viewObjects.add(area);
-		//viewObjects.add(bat);
+		viewObjects.add(bat);
+		viewObjects.add(c);
+		c.setVx(2);
+		c.setVy(1);
+		c.play();
 	}
 
 	public MouseListener getMouseListener(){

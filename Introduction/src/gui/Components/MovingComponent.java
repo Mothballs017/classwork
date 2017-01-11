@@ -69,11 +69,18 @@ public class MovingComponent extends Component implements Runnable {
 		while(running){
 			try {
 				Thread.sleep(REFRESH_RATE);
-				//I will add code here last
+				checkBehaviors();
 				update();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+
+	private void checkBehaviors() {
+		if(getY()>300){
+			setY(300);
+			setVy(-vy);
 		}
 	}
 
